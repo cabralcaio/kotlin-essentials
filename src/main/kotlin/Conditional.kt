@@ -95,4 +95,26 @@ fun main() {
 //    println("ABC" !is Int) // true
 
 
+    // Smart Casting
+    fun convertToInt(num: Number): Int =
+        if (num is Int) num // the type of num here is Int
+        else num.toInt()
+
+
+
+    // while-statement
+    var i = 1
+        while (i < 10) {
+            print(i)
+            i *= 2
+        }
+    // 1248
+        var j = 1
+    // do-while statement
+        do {
+            print(j)
+            j *= 2
+        } while (j < 10)
+    // 1248
+
 }
