@@ -1,14 +1,15 @@
 package functionalKotlin
 
-class Motor {
+abstract class Motor { // needs to be open for heritage
     private var ligado: Boolean = false
-    private var nivelCombustivel: Int = 2
 
     fun ligar() {
+        println("Ligando o carro...")
         ligado = true
     }
 
     fun desligar() {
+        println("Desligando o carro...")
         ligado = false
     }
 
@@ -16,12 +17,7 @@ class Motor {
         return ligado
     }
 
-    fun temCombustivel(): Boolean {
-        return nivelCombustivel > 0
-    }
+    abstract fun temAutonomia(): Boolean
 
-    fun gastandoCombustivel() {
-        nivelCombustivel --
-        println("Gastando combustivel, nivel agora é: ${nivelCombustivel}")
-    }
+    abstract fun gastando()
 }

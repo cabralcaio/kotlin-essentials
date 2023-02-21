@@ -6,25 +6,29 @@ class Carro (
     var cor: String? = null
 
     fun partida() {
-        println("Ligando o carro...")
         motor.ligar()
     }
 
     fun desligar() {
-        println("Desligando o carro...")
         motor.desligar()
     }
 
     fun anda() {
         when {
             !motor.estaLigado() -> println("Primeiro ligue o carro")
-            !motor.temCombustivel() -> {
-                println("Coloque combustível")
-                motor.desligar()
+                !motor.temAutonomia() -> {
+                    when (motor) {
+                        is MotorEletrico -> println("Carregue a bateria")
+                        is MotorCombustao -> println("Coloque combustível")
+                    }
+                    motor.desligar()
             }
             else -> {
-                println("Carro andando: Vrrrrunnnn")
-                motor.gastandoCombustivel()
+                when (motor) {
+                    is MotorEletrico -> println("Carro andando")
+                    is MotorCombustao -> println("Carro andando: Vrrrummmmm")
+                }
+                motor.gastando()
             }
         }
     }
